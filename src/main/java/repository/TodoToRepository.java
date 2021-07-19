@@ -40,4 +40,23 @@ public class TodoToRepository {
         }
         return todoItems;
     }
+    public ArrayList<Todo> getAllTodoFromDatabase() throws SQLException {}
+    public Todo getSingleTodoFromDatabase(Integer id) throws SQLException{
+        Todo todo;
+        String query = "SELECT * FROM todos WHERE id =" + id + "LIMIT 1";
+        PreparedStatement prepareStatement = dbHandler.getConnection().preparedStatement(query);
+        ResultSet result = preparedStatement.executeQuery();
+        result.next();
+        todo = new Todo(
+                result.getInt("id"),
+                result.getString("description"),
+                result.getDate("dueDate"),
+                result.getTime("dueTime"),
+                Status.valueOf(result.getString("status"))
+
+        );
+        preparedStatement.close();
+        return todo;
+
+    }
 }

@@ -47,8 +47,15 @@ public class TodoController {
     public void updateTodo(){
 
     }
-    public void viewTodo(){
-        ArrayList<Id> id = new ArrayList<Id>();
+    public void viewSingleTodo(Integer id){
+        Todo todo = null;
+        try {
+            todo = todoRepository.getSingleTodoFromDatabase(id);
+        }catch (SQLException e){
+            System.out.println(e);
+        }
+
+
 
     }
     public void viewAllTodo(){

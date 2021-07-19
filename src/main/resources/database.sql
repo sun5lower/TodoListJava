@@ -1,4 +1,4 @@
-SET GLOBAL time_zone = '00:00';
+SET GLOBAL time_zone = '+0:00';
 create database if not exists TodoApp;
 
 use TodoApp;
@@ -13,4 +13,5 @@ create_at timestamp default current_timestamp,
 last_updated timestamp default current_timestamp,
 primary key(id)
 );
+
 SELECT * FROM todos;
